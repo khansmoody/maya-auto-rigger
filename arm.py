@@ -60,7 +60,7 @@ class ArmModule:
             if cmds.objExists(l_g) and cmds.objExists(r_g):
                 pos = cmds.xform(l_g, q=True, t=True, ws=True)
                 mirrored_pos = [pos[0] * -1, pos[1], pos[2]]
-                cmds.xform(r_g, ws=True, t=True, p=mirrored_pos)
+                cmds.xform(r_g, ws=True, t=mirrored_pos)
 
         print(f"--- Left to Right Guides mirrored successfully ---")
 
@@ -79,7 +79,7 @@ class ArmModule:
 
         jnt_names = [f"shoulder_{self.side}_JNT", f"elbow_{self.side}_JNT", f"wrist_{self.side}_JNT"]
         for j in jnt_names:
-            if not cmds.objExists(j):
+            if cmds.objExists(j):
                 cmds.delete(j)
 
         # 2. Read realtime world coordinates of guides
@@ -100,7 +100,7 @@ class ArmModule:
         cmds.setAttr(f"{wrist_jnt}.jointOrient", 0, 0, 0)
 
         # 5. Set preferred angle
-        cmds.joint(elbow_jnt, e=True, pa=True)
+        cmds.joint(elbow_jnt, e=True, spa=True)
 
         print(f"--- {self.side} Arm Joints created successfully ---")
 
