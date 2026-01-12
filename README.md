@@ -7,3 +7,11 @@ Modular Auto-Rigging system to promote animation pipeline efficiency.
 [✅]Skeleton Build
 [❎]FK/IK Controller
 [❎]UI(PySide6)
+
+## Usage (for now)
+
+1. Make a custom tool with whole codes.
+2. Execute the custom tool.
+3. Locate guides at correct location.
+4. Mirror the left guides location with right.(left_arm.mirror_guides())
+5. Create joints.(left_arm.create_joints())
